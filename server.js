@@ -75,14 +75,8 @@ app.use('/uploads',
   express.static(join(__dirname, 'uploads'))
 );
 
-/**
- * ✅ Serve your static frontend files (HTML/CSS/JS) from ./frontend folder:
- */
-app.use(express.static(join(__dirname, 'frontend')));
-
-// Optional: SPA fallback, or specific HTML fallback for / route
 app.get('/', (req, res) => {
-  res.sendFile(join(__dirname, 'frontend', 'index.html'));
+  res.json({ message: 'API is running ' });
 });
 
 // API routes
@@ -111,3 +105,4 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
   console.log(`Server running in ${process.env.NODE_ENV || 'development'} on port ${PORT}`)
 );
+
