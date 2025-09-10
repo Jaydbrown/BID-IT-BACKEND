@@ -23,6 +23,7 @@ const __dirname = dirname(__filename);
 const allowedOrigins = [
   'http://127.0.0.1:5500',
   'http://localhost:5500',
+  'bid-bit.netlify.app'
 ];
 
 // Helmet with relaxed CSP for images + frontend communication
@@ -105,4 +106,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
   console.log(`Server running in ${process.env.NODE_ENV || 'development'} on port ${PORT}`)
 );
+
 
