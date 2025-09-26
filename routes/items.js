@@ -14,16 +14,14 @@ const router = express.Router();
 
 /**
  * PUBLIC ROUTES
- * GET /api/items - List all items with optional filters
- * GET /api/items/:id - Get single item by ID (MUST stay last)
  */
-router.get('/', fetchItems);
+router.get('/', fetchItems); // GET /api/items - List all items with optional filters
 
 /**
  * PROTECTED ROUTES
  * Require authentication middleware
  */
-router.get('/my', protect, fetchMyItems); // GET /api/items/my - seller's own listings
+router.get('/my', protect, fetchMyItems); // GET /api/items/my - seller's own listings (MUST come before /:id)
 
 router.post(
   '/',
@@ -46,9 +44,9 @@ router.delete(
 ); // DELETE /api/items/:id - delete item
 
 /**
- * DYNAMIC ROUTE (place LAST to avoid conflicts)
- * GET /api/items/:id - get single item by ID
+ * DYNAMIC ROUTE (MUST be LAST to avoid conflicts)
+ * This catches any GET request that doesn't match the specific routes above
  */
-router.get('/:id', fetchItemById);
+router.get('/:id', fetchItemById); // GET /api/items/:id - get single item by ID
 
 export default router;
